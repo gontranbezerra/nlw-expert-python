@@ -1,3 +1,4 @@
+from src.controllers.tag_creator_controller import TagCreatorController
 from src.views.http_types.http_request import HttpRequest
 from src.views.http_types.http_response import HttpResponse
 
@@ -11,8 +12,8 @@ class TagCreatorView:
         body = http_request.body
         product_code = body["product_code"]
 
-        # TODO: Lógica de regra de negócio
-        print("Estou na view...")
-        print(product_code)
+        # lógica de negócio
+        tag_creator_controller = TagCreatorController()
+        formatted_response = tag_creator_controller.create(product_code)
 
-        return HttpResponse(status_code=200, body={"hello": "word"})
+        return HttpResponse(status_code=200, body=formatted_response)
